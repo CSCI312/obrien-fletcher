@@ -15,3 +15,7 @@ return a value of "type" "qualifier" or "indentifier"*/
 char classify_string(void){
     return this.type;
 }
+
+int gettoken(void) {
+    
+}
