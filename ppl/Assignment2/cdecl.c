@@ -6,6 +6,8 @@
 #define MAXTOKENLEN 64
 #define MAXTOKENS 100
 
+int ind = -1; //index track position 
+
 struct token { 
     char type;
     char string[MAXTOKENLEN]; 
@@ -66,6 +68,20 @@ int gettoken(void) {
     }
 }
 
+int read_to_first_identifier(void){
+    gettoken(); //get first token
+
+    while (this.type != 'i'){ //until first identifier
+        ind++;
+        stack[ind] = this; //push onto stack
+        gettoken();
+    }
+
+    printf("identifier is ", this.string);
+
+    gettoken;
+}
+
 /*1.get current token
 2. set this.string equal to token
 3. classify it, set this.type
@@ -73,6 +89,4 @@ int gettoken(void) {
 5. */
 int main(void){
     gettoken();
-    printf("%s\n", this.string);
-    printf("%c\n", this.type);
 }
