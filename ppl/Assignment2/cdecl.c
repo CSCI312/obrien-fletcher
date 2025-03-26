@@ -108,6 +108,27 @@ int deal_with_any_pointers(void){
     }
 }
 
+int deal_with_declarator(void){
+    if (this.type == '['){
+        deal_with_arrays();
+    }
+    if (this.type == '('){
+        deal_with_function_args();
+    }
+    deal_with_any_pointers();
+    while (ind >= 0){
+        if (stack[ind].type == '('){
+            ind--;
+            gettoken();
+            deal_with_declarator();
+        } else {
+            printf("%s", this.string);
+            ind--;
+        }
+    }
+
+}
+
 /*1.get current token
 2. set this.string equal to token
 3. classify it, set this.type
