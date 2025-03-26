@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
 #define MAXTOKENLEN 64
 #define MAXTOKENS 100
 
@@ -45,5 +50,15 @@ char classify_string(void){
 }
 
 int gettoken(void) {
-    this.string = stack[1].string;
+    //read the next token into this.string
+    //if it is alphanumeric, classify_string
+    if (scanf("%[A-Za-z0-9_]", this.string) == 1){
+
+        if (strlen(this.string) == 1){
+            this.type = this.string;
+            this.string[0] = '\0';
+        } else {
+            classify_string();
+        }
+    }
 }
