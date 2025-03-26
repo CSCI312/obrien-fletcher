@@ -82,6 +82,14 @@ int read_to_first_identifier(void){
     gettoken;
 }
 
+//parsing routines
+
+int deal_with_function_args(void){
+    if (this.type == ')'){
+        printf("function returning");
+    }
+}
+
 /*1.get current token
 2. set this.string equal to token
 3. classify it, set this.type
