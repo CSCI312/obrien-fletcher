@@ -100,6 +100,7 @@ int deal_with_arrays(void){
     }
 }
 
+//while you've got "*" on the stack print "pointer to" and pop it  
 int deal_with_any_pointers(void){
     while (stack[ind].type == '*'){
         printf("pointer to");
