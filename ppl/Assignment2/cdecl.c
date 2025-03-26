@@ -60,12 +60,7 @@ int gettoken(void) {
 
     if (scanf("%[A-Za-z0-9_]", this.string) == 1){
 
-        if (strlen(this.string) == 1){
-            this.type = *this.string; //this.type = the token itself
-            this.string[0] = '\0'; //terminate with a nul
-        } else {
-            classify_string();
-        }
+        classify_string();
         ind++;
     }
 }
@@ -81,6 +76,7 @@ int read_to_first_identifier(void){
     printf("identifier is %s", this.string);
 
     gettoken;
+    printf("%s", this.type);
 }
 
 //parsing routines
@@ -110,6 +106,7 @@ int deal_with_any_pointers(void){
 
 //based on type, move forward with function
 int deal_with_declarator(void){
+    printf("%s",this.type);
     if (this.type == '['){
         deal_with_arrays();
     }
