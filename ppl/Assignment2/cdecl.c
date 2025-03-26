@@ -100,6 +100,13 @@ int deal_with_arrays(void){
     }
 }
 
+int deal_with_any_pointers(void){
+    while (stack[ind].type == '*'){
+        printf("pointer to");
+        ind--;
+    }
+}
+
 /*1.get current token
 2. set this.string equal to token
 3. classify it, set this.type
