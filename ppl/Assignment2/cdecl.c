@@ -48,9 +48,16 @@ char classify_string(void){
 int gettoken(void) {
     //read the next token into this.string
     //if it is alphanumeric, classify_string
-    if (scanf(" %99[^A-Za-z0-9 \t\n]", this.string) == 1){
+    if (scanf(" %1[^A-Za-z0-9 \t\n]", this.string) == 1){
 
-        if (strlen(this.string) >= 1){
+        if (strlen(this.string) == 1){
+            this.type = *this.string; //this.type = the token itself
+            this.string[0] = '\0'; //terminate with a nul
+            ind++;
+            return 0;
+        }
+
+        if (strlen(this.string) > 1){
             this.type = *this.string; //this.type = the token itself
             this.string[0] = '\0'; //terminate with a nul
             ind++;
@@ -70,26 +77,33 @@ int read_to_first_identifier(void){
 
     while (this.type != 'i'){ //until first identifier
         stack[ind] = this; //push onto stack
+        if (this.string[0] == '\0'){
+            printf("pushed %c onto stack\n", this.type);
+        } else {
+            printf("pushed %s onto stack\n", this.string);
+        }
         gettoken();
     }
 
     printf("%s is ", this.string);
+
+    gettoken();
+    stack[ind] = this;
 }
 
 //parsing routines
 
 //read past closing ')' and print out
 int deal_with_function_args(void){
-    if (this.type == ')'){
-        printf("function returning");
+    if (stack[ind].type == '('){
+        printf("function returning ");
     }
 }
 
 //while you've got "[size]", print it and read past
 int deal_with_arrays(void){
-    if (this.type == '['){
-        printf("[%d]", gettoken());
-        gettoken();
+    if (stack[ind].type == '['){
+        printf("array of ");
     }
 }
 
@@ -104,10 +118,10 @@ int deal_with_any_pointers(void){
 //based on type, move forward with function
 int deal_with_declarator(void){
     while (ind >= 0){
-        if (this.type == '['){
+        if (stack[ind].type == '['){
             deal_with_arrays();
         }
-        if (this.type == '('){
+        if (stack[ind].type == '('){
             deal_with_function_args();
         }
         deal_with_any_pointers();
