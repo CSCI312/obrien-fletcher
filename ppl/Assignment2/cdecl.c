@@ -108,6 +108,7 @@ int deal_with_any_pointers(void){
     }
 }
 
+//based on type, move forward with function
 int deal_with_declarator(void){
     if (this.type == '['){
         deal_with_arrays();
@@ -136,4 +137,5 @@ int deal_with_declarator(void){
 5. */
 int main(void){
     read_to_first_identifier();
+    deal_with_declarator();
 }
