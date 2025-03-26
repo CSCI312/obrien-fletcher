@@ -92,6 +92,7 @@ int deal_with_function_args(void){
     }
 }
 
+//while you've got "[size]", print it and read past
 int deal_with_arrays(void){
     if (this.type == '['){
         printf("[%d]", gettoken());
