@@ -77,7 +77,7 @@ int read_to_first_identifier(void){
         gettoken();
     }
 
-    printf("identifier is ", this.string);
+    printf("identifier is %s", this.string);
 
     gettoken;
 }
@@ -88,5 +88,5 @@ int read_to_first_identifier(void){
 4. if not identifier, push onto stack
 5. */
 int main(void){
-    gettoken();
+    read_to_first_identifier();
 }
