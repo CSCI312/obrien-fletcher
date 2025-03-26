@@ -73,10 +73,7 @@ int read_to_first_identifier(void){
         gettoken();
     }
 
-    printf("identifier is %s", this.string);
-
-    gettoken;
-    printf("%s", this.type);
+    printf("%s is ", this.string);
 }
 
 //parsing routines
@@ -99,30 +96,24 @@ int deal_with_arrays(void){
 //while you've got "*" on the stack print "pointer to" and pop it  
 int deal_with_any_pointers(void){
     while (stack[ind].type == '*'){
-        printf("pointer to");
+        printf("pointer to ");
         ind--;
     }
 }
 
 //based on type, move forward with function
 int deal_with_declarator(void){
-    printf("%s",this.type);
-    if (this.type == '['){
-        deal_with_arrays();
-    }
-    if (this.type == '('){
-        deal_with_function_args();
-    }
-    deal_with_any_pointers();
     while (ind >= 0){
-        if (stack[ind].type == '('){
-            ind--;
-            gettoken();
-            deal_with_declarator();
-        } else {
-            printf("%s", this.string);
-            ind--;
+        if (this.type == '['){
+            deal_with_arrays();
         }
+        if (this.type == '('){
+            deal_with_function_args();
+        }
+        deal_with_any_pointers();
+
+        printf("%s", stack[ind].string);
+        ind--;
     }
 
 }
