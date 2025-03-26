@@ -72,11 +72,6 @@ int read_to_first_identifier(void){
 
     while (this.type != 'i'){ //until first identifier
         stack[ind] = this; //push onto stack
-        if (this.string[0] == '\0'){
-            printf("pushed %c onto stack\n", this.type);
-        } else {
-            printf("pushed %s onto stack\n", this.string);
-        }
         gettoken();
     }
 
@@ -85,11 +80,6 @@ int read_to_first_identifier(void){
     gettoken();
     while (this.type != ';'){
         stack[ind] = this;
-        if (this.string[0] == '\0'){
-            printf("\npushed %c onto stack\n", this.type);
-        } else {
-            printf("\npushed %s onto stack\n", this.string);
-        }
         gettoken();
     }
 }
