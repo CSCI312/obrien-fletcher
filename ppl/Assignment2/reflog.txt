@@ -1,7 +1,52 @@
-865c718 HEAD@{0}: merge feature/classify_string: Fast-forward
-0fa0e4e HEAD@{1}: checkout: moving from feature/classify_string to main
-865c718 HEAD@{2}: commit: Add Function Comment
-44299b5 HEAD@{3}: commit: Code Classify String Function
-0fa0e4e HEAD@{4}: checkout: moving from main to feature/classify_string
-0fa0e4e HEAD@{5}: commit: Add Data Structure
-6dcd3d7 HEAD@{6}: clone: from https://github.com/CSCI312/obrien-fletcher.git
+0509d92 HEAD@{0}: merge feature/main: Fast-forward
+85e36c1 HEAD@{1}: checkout: moving from feature/main to main
+0509d92 HEAD@{2}: commit: Remove Debug Print Statements
+e2a234c HEAD@{3}: commit: Fix Read Tokens Until Semicolon
+a0920c3 HEAD@{4}: commit: Fix Tokenizing Non-Alphanumerics
+10f20b3 HEAD@{5}: commit: Fix Pointer Finding
+518ff70 HEAD@{6}: commit: Fix Get Token Method
+85e36c1 HEAD@{7}: checkout: moving from main to feature/main
+85e36c1 HEAD@{8}: merge feature/deal_with_declarator: Fast-forward
+c3bb04c HEAD@{9}: checkout: moving from feature/deal_with_declarator to main
+85e36c1 HEAD@{10}: commit: Add Comments
+0b7c41c HEAD@{11}: commit: Code Deal With Declarator
+c3bb04c HEAD@{12}: checkout: moving from main to feature/deal_with_declarator
+c3bb04c HEAD@{13}: merge feature/deal_with_any_pointers: Fast-forward
+3b40ae1 HEAD@{14}: checkout: moving from feature/deal_with_any_pointers to main
+c3bb04c HEAD@{15}: commit: Add Comments
+49ea4c8 HEAD@{16}: commit: Code Deal With Pointers
+3b40ae1 HEAD@{17}: checkout: moving from main to feature/deal_with_any_pointers
+3b40ae1 HEAD@{18}: merge feature/deal_with_arrays: Fast-forward
+e6aaab1 HEAD@{19}: checkout: moving from feature/deal_with_arrays to main
+3b40ae1 HEAD@{20}: commit: Add Comments
+3d6cae4 HEAD@{21}: commit: Add Deal With Arrays Code
+e6aaab1 HEAD@{22}: checkout: moving from main to feature/deal_with_arrays
+e6aaab1 HEAD@{23}: checkout: moving from feature/deal_with_arrays to main
+7a79239 HEAD@{24}: checkout: moving from main to feature/deal_with_arrays
+e6aaab1 HEAD@{25}: merge feature/deal_with_function_args: Fast-forward
+7a79239 HEAD@{26}: checkout: moving from feature/deal_with_function_args to main
+e6aaab1 HEAD@{27}: commit: Add Comments
+d9cc98f HEAD@{28}: commit: Code Deal With Function Args
+7a79239 HEAD@{29}: checkout: moving from feature/deal_with_arrays to feature/deal_with_function_args
+7a79239 HEAD@{30}: checkout: moving from main to feature/deal_with_arrays
+7a79239 HEAD@{31}: merge feature/read_to_first_identifier: Fast-forward
+2463644 HEAD@{32}: checkout: moving from feature/read_to_first_identifier to main
+7a79239 HEAD@{33}: commit: Fix Print Statement
+75f4247 HEAD@{34}: commit: Read To First Identifier Coded
+2463644 HEAD@{35}: checkout: moving from main to feature/read_to_first_identifier
+2463644 HEAD@{36}: commit: Merge With Main
+d3b07ea HEAD@{37}: merge feature/gettoken: Fast-forward
+865c718 HEAD@{38}: checkout: moving from feature/gettoken to main
+d3b07ea HEAD@{39}: commit: Test Output With Scan Symbol Too
+4d8f34e HEAD@{40}: commit: Scan Next Token
+24b06c0 HEAD@{41}: commit: Fix Classify String
+f9b9ed6 HEAD@{42}: commit: Modify Classify String
+9f6175a HEAD@{43}: commit: Begin Gettoken Function
+865c718 HEAD@{44}: checkout: moving from main to feature/gettoken
+865c718 HEAD@{45}: merge feature/classify_string: Fast-forward
+0fa0e4e HEAD@{46}: checkout: moving from feature/classify_string to main
+865c718 HEAD@{47}: commit: Add Function Comment
+44299b5 HEAD@{48}: commit: Code Classify String Function
+0fa0e4e HEAD@{49}: checkout: moving from main to feature/classify_string
+0fa0e4e HEAD@{50}: commit: Add Data Structure
+6dcd3d7 HEAD@{51}: clone: from https://github.com/CSCI312/obrien-fletcher.git
