@@ -1,0 +1,7 @@
+865c718 HEAD@{0}: merge feature/classify_string: Fast-forward
+0fa0e4e HEAD@{1}: checkout: moving from feature/classify_string to main
+865c718 HEAD@{2}: commit: Add Function Comment
+44299b5 HEAD@{3}: commit: Code Classify String Function
+0fa0e4e HEAD@{4}: checkout: moving from main to feature/classify_string
+0fa0e4e HEAD@{5}: commit: Add Data Structure
+6dcd3d7 HEAD@{6}: clone: from https://github.com/CSCI312/obrien-fletcher.git
