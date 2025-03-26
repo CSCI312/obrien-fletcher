@@ -84,6 +84,7 @@ int read_to_first_identifier(void){
 
 //parsing routines
 
+//read past closing ')' and print out
 int deal_with_function_args(void){
     if (this.type == ')'){
         printf("function returning");
