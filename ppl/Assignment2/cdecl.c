@@ -53,6 +53,7 @@ int gettoken(void) {
         if (strlen(this.string) >= 1){
             this.type = *this.string; //this.type = the token itself
             this.string[0] = '\0'; //terminate with a nul
+            ind++;
             return 0;
         }
     }
@@ -65,6 +66,7 @@ int gettoken(void) {
         } else {
             classify_string();
         }
+        ind++;
     }
 }
 
@@ -72,7 +74,6 @@ int read_to_first_identifier(void){
     gettoken(); //get first token
 
     while (this.type != 'i'){ //until first identifier
-        ind++;
         stack[ind] = this; //push onto stack
         gettoken();
     }
@@ -88,6 +89,13 @@ int read_to_first_identifier(void){
 int deal_with_function_args(void){
     if (this.type == ')'){
         printf("function returning");
+    }
+}
+
+int deal_with_arrays(void){
+    if (this.type == '['){
+        printf("[%d]", gettoken());
+        gettoken();
     }
 }
 
