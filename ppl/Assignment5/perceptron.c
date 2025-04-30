@@ -1,7 +1,7 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "perceptron.h"
 
 struct shape {
@@ -10,14 +10,14 @@ struct shape {
 };
 
 struct data {
-    double **elements; // 2D array for the features (inputs)
-    double *targets;   // 1D array for the targets
-    struct shape dims; // Shape to store num_examples and num_features
+    double **elements;
+    double *targets;
+    struct shape dims;
 };
 
 struct model {
-    double *weights;   // 1D array for the weights
-    struct shape dims; // Dimensionality of the model
+    double *weights;
+    struct shape dims;
 };
 
 Data new_Data(const char *fname)
@@ -30,7 +30,6 @@ Data new_Data(const char *fname)
 
     Data data = (Data)malloc(sizeof(struct data));
 
-    // Read the file to determine the number of examples and features
     char line[1024];
     int num_examples = 0;
     int num_features = 0;
@@ -43,16 +42,14 @@ Data new_Data(const char *fname)
         }
     }
 
-    // Reset the file pointer and allocate memory for the data
     fseek(fp, 0, SEEK_SET);
 
     data->elements = (double **)malloc(num_examples * sizeof(double *));
     data->targets = (double *)malloc(num_examples * sizeof(double));
 
     data->dims.num_examples = num_examples;
-    data->dims.num_features = num_features - 1; // Last value is the target
+    data->dims.num_features = num_features - 1;
 
-    // Read the data into the data structure
     int idx = 0;
     while (fgets(line, sizeof(line), fp)) {
         data->elements[idx] = (double *)malloc(data->dims.num_features * sizeof(double));
@@ -63,7 +60,7 @@ Data new_Data(const char *fname)
             token = strtok(NULL, " ");
         }
 
-        data->targets[idx] = atof(token);  // Last value is the target
+        data->targets[idx] = atof(token);
         idx++;
     }
 
@@ -74,10 +71,9 @@ Data new_Data(const char *fname)
 Model new_Model(const Data data)
 {
     Model model = (Model)malloc(sizeof(struct model));
-    model->dims = data->dims;  // Get dimensionality from data
+    model->dims = data->dims;
+    model->weights = (double *)malloc((data->dims.num_features + 1) * sizeof(double));
 
-    // Initialize weights with random values
-    model->weights = (double *)malloc((data->dims.num_features + 1) * sizeof(double)); // +1 for w0
     for (int i = 0; i < data->dims.num_features + 1; i++) {
         model->weights[i] = (double)rand() / RAND_MAX;
     }
@@ -87,17 +83,13 @@ Model new_Model(const Data data)
 
 static void sgd(Model model, Data data, int idx)
 {
-    double xcoord, ycoord, target;
+    double xcoord = data->elements[idx][0];
+    double ycoord = data->elements[idx][1];
+    double target = data->targets[idx];
 
-    // Get coordinates and target for the idx-th example
-    xcoord = data->elements[idx][0];
-    ycoord = data->elements[idx][1];
-    target = data->targets[idx];
-
-    // Update weights using the gradient
     model->weights[2] += target * xcoord;
     model->weights[1] += target * ycoord;
-    model->weights[0] += target * 1;  // bias term
+    model->weights[0] += target * 1;
 }
 
 static int predict(Model model, Data data, int idx)
@@ -112,22 +104,27 @@ static int predict(Model model, Data data, int idx)
 void fit_model(Model model, Data data)
 {
     bool misclassified = true;
+    int max_iterations = 1000;
+    int iterations = 0;
 
-    while (misclassified) {
+    while (misclassified && iterations < max_iterations) {
         misclassified = false;
         for (int i = 0; i < data->dims.num_examples; i++) {
             int hypothesis = predict(model, data, i);
             double target = data->targets[i];
+
             if ((hypothesis > 0 && target > 0) || (hypothesis < 0 && target < 0)) {
                 continue;
             }
+
             sgd(model, data, i);
             misclassified = true;
         }
+        iterations++;
     }
 }
 
-void run_scoring_engine(const Model model)
+void run_scoring_engine(const Model model, const Data data)
 {
     double x, y;
 
@@ -137,5 +134,34 @@ void run_scoring_engine(const Model model)
     printf("Enter y: \n");
     scanf("%lf", &y);
 
-    printf("Prediction = %d\n", predict(model, model, x, y));
+    printf("Prediction = %d\n", predict(model, data, 0));
 }
+
+int get_num_examples(Data data)
+{
+    return data->dims.num_examples;
+}
+
+int get_num_features(Data data)
+{
+    return data->dims.num_features;
+}
+
+void free_Model(Model model)
+{
+    if (model) {
+        free(model->weights);
+        free(model);
+    }
+}
+
+void free_Data(Data data)
+{
+    for (int i = 0; i < data->dims.num_examples; i++) {
+        free(data->elements[i]);
+    }
+    free(data->elements);
+    free(data->targets);
+    free(data);
+}
+

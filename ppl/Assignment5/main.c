@@ -12,24 +12,17 @@ int main(int argc, char *argv[])
     char *fname = argv[1];
 
     // Building
-    Data data = new_Data(fname);
-    Model model = new_Model(data);
+    Data data = new_Data(fname); 
+    Model model = new_Model(data);  
 
     // Training
-    fit_model(model, data);
+    fit_model(model, data);        
 
     // Scoring
-    run_scoring_engine(model);
+    run_scoring_engine(model, data);
 
-    // Clean up
-    for (int i = 0; i < data->dims.num_examples; i++) {
-        free(data->elements[i]);
-    }
-    free(data->elements);
-    free(data->targets);
-    free(data);
-    free(model->weights);
-    free(model);
+    free_Data(data);     
+    free_Model(model);    
 
     return 0;
 }
