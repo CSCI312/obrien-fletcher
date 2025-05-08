@@ -1,0 +1,45 @@
+Script started on 2025-05-08 22:38:04+00:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="87" LINES="34"]
+]0;root@ip-172-31-23-93:/home/ec2-user/assign5/obrien-fletcher/ppl/Final[?2004h[root@ip-172-31-23-93 Final]# v[Kgit pushcommit -m "Progress on Wep Dmg System- Fix map deleting firing ship after destroying another ship"[A[4Padd Gameplayer.py Gamestate.py Ship.py Weapon.py 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cstatus[Knano Gamestate.py [4@python3 Gameplayer[C[C[C[C[9Pnano Ship[C[C[C[C[2@Weapon[C[C[C[C[2PShip[C[C[C[C[6@Gameplayer[C[C[C[C[3@python3[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pnano Gamestate[C[C[C[C[4@python3 Gameplayer[C[C[C[C[3Pnano[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6PShip[C[C[C[C[2@Weapon[C[C[C[C[2PShip[C[C[C[C[9@python3 Gameplayer[C[C[C[C[4Pnano Gamestate[C[C[C[C[8Pgit statusadd Gameplayer.py Gamestate.py Ship.py Weapon.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "Progress on Wep Dmg System- Fix map deleting firing ship after destroying another ship"[Apush[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kvalgrind --leak [K-check=full --show-leak-kinds=all ./ao[K.out  train.dat
+[?2004l==3076099== Memcheck, a memory error detector
+==3076099== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==3076099== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==3076099== Command: ./a.out train.dat
+==3076099== 
+==3076099== Invalid read of size 1
+==3076099==    at 0x48BBD83: ____strtod_l_internal (in /usr/lib64/libc.so.6)
+==3076099==    by 0x4013F4: atof (stdlib-float.h:27)
+==3076099==    by 0x4013F4: new_Data (perceptron.c:59)
+==3076099==    by 0x401209: main (main.c:15)
+==3076099==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==3076099== 
+==3076099== 
+==3076099== Process terminating with default action of signal 11 (SIGSEGV)
+==3076099==  Access not within mapped region at address 0x0
+==3076099==    at 0x48BBD83: ____strtod_l_internal (in /usr/lib64/libc.so.6)
+==3076099==    by 0x4013F4: atof (stdlib-float.h:27)
+==3076099==    by 0x4013F4: new_Data (perceptron.c:59)
+==3076099==    by 0x401209: main (main.c:15)
+==3076099==  If you believe this happened as a result of a stack
+==3076099==  overflow in your program's main thread (unlikely but
+==3076099==  possible), you can try to increase the size of the
+==3076099==  main thread stack using the --main-stacksize= flag.
+==3076099==  The main thread stack size used in this run was 8388608.
+==3076099== 
+==3076099== HEAP SUMMARY:
+==3076099==     in use at exit: 5,384 bytes in 6 blocks
+==3076099==   total heap usage: 6 allocs, 0 frees, 5,384 bytes allocated
+==3076099== 
+==3076099== 24 bytes in 1 blocks are still reachable in loss record 1 of 6
+==3076099==    at 0x484486F: malloc (vg_replace_malloc.c:381)
+==3076099==    by 0x401324: new_Data (perceptron.c:31)
+==3076099==    by 0x401209: main (main.c:15)
+==3076099== 
+==3076099== 160 bytes in 1 blocks are still reachable in loss record 2 of 6
+==3076099==    at 0x484486F: malloc (vg_replace_malloc.c:381)
+==3076099==    by 0x4013B5: new_Data (perceptron.c:47)
+==3076099==    by 0x401209: main (main.c:15)
+==3076099== 
+==3076099== 160 bytes in 1 blocks are still reachable in loss record 3 of 6
+==3076099==    at 0x
