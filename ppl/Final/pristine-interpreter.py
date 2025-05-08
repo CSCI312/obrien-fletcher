@@ -46,6 +46,11 @@ class Interpreter:
         TOS1 = self.stack.pop()
         self.stack.append(TOS+TOS1)
 
+    def BINARY_SUB(self):
+       TOS = self.stack.pop()
+       TOS1 = self.stack.pop()
+       self.stack.append(TOS-TOS1)
+
     def PRINT_EXPR(self):
         '''TOS is removed from the stack and printed.'''
         print(self.stack.pop())
