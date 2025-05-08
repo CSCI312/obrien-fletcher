@@ -1,29 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "perceptron.h"
 
-int main(int argc, char *argv[])
-{
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <data_file>\n", argv[0]);
-        exit(1);
-    }
+int main(int argc, char **argv) {
+    /* argv[1] = train.dat, argv[2] = test.dat */
+    Data train = new_Data(argv[1]);
+    Model m     = new_Model(train);
+    fit_model(m, train);
+    delete_Data(train);
 
-    char *fname = argv[1];
+    Data test  = new_Data(argv[2]);
+    evaluate_model(m, test);
+    delete_Data(test);
 
-    // Building
-    Data data = new_Data(fname); 
-    Model model = new_Model(data);  
-
-    // Training
-    fit_model(model, data);        
-
-    // Scoring
-    run_scoring_engine(model, data);
-
-    free_Data(data);     
-    free_Model(model);    
-
+    delete_Model(m);
     return 0;
 }
 

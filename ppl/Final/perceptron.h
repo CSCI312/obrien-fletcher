@@ -10,6 +10,9 @@ void   fit_model(Model model, Data data);
 void   run_scoring_engine(const Model model, const Data data);
 int    get_num_examples(Data data);
 int    get_num_features(Data data);
+
+void   evaluate_model(Model model, Data data);
+
 void   delete_Data(Data data);
 void   delete_Model(Model model);
 

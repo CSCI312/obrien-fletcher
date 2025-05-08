@@ -165,3 +165,20 @@ void delete_Data(Data data)
     free(data);
 }
 
+void evaluate_model(Model model, Data data) {
+    int n = get_num_examples(data);
+    int d = get_num_features(data);
+    int correct = 0;
+    for (int i = 0; i < n; i++) {
+        double sum = 0.0;
+        for (int j = 0; j < d; j++) {
+            sum += model->weights[j] * data->elements[i][j];
+        }
+        int pred = (sum >= 0.0) ? 1 : -1;
+        if (pred == data->targets[i]) {
+            correct++;
+        }
+    }
+    double pct = 100.0 * correct / (double)n;
+    printf("Accuracy: %.2f%%\n", pct);
+}
