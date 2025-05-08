@@ -147,7 +147,7 @@ int get_num_features(Data data)
     return data->dims.num_features;
 }
 
-void free_Model(Model model)
+void delete_Model(Model model)
 {
     if (model) {
         free(model->weights);
@@ -155,7 +155,7 @@ void free_Model(Model model)
     }
 }
 
-void free_Data(Data data)
+void delete_Data(Data data)
 {
     for (int i = 0; i < data->dims.num_examples; i++) {
         free(data->elements[i]);
